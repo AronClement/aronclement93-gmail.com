@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aron's Investment</title>
+
+<style>
+body{
+font-family:Arial;
+margin:0;
+background:#f4f4f4;
+}
+
+header{
+background:#0a3d62;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+nav{
+background:#1e3799;
+padding:10px;
+text-align:center;
+}
+
+nav button{
+margin:5px;
+padding:10px;
+border:none;
+background:#60a3bc;
+color:white;
+cursor:pointer;
+}
+
+section{
+display:none;
+padding:20px;
+}
+
+.active{
+display:block;
+}
+
+.card{
+background:white;
+padding:15px;
+margin:10px 0;
+border-radius:8px;
+}
+
+input,select,textarea{
+width:100%;
+padding:8px;
+margin:5px 0;
+}
+
+button.submit{
+background:green;
+color:white;
+padding:10px;
+width:100%;
+border:none;
+cursor:pointer;
+}
+
+.admin{
+background:#222;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Aron's Investment</h1>
+<p><b>We are to serve</b></p>
+</header>
+
+<nav>
+<button onclick="showSection('transport')">Transportation</button>
+<button onclick="showSection('transaction')">Transactions</button>
+<button onclick="showSection('food')">Food</button>
+<button onclick="showSection('payment')">Payment</button>
+<button onclick="showSection('adminLogin')">Admin</button>
+</nav>
+
+<!-- TRANSPORT -->
+
+<section id="transport" class="active">
+
+<h2>Transportation Services</h2>
+
+<div class="card">
+<h3>🚌 Bus Companies</h3>
+<ul>
+<li><a href="https://www.busbora.co.tz" target="_blank">BM Coach</a></li>
+<li><a href="https://www.kilimanjaroexpress.co.tz" target="_blank">Kilimanjaro Express</a></li>
+<li><a href="https://www.shabibyline.co.tz" target="_blank">Shabiby Line</a></li>
+<li><a href="https://www.aboodbus.co.tz" target="_blank">Abood Bus</a></li>
+<li><a href="https://www.newbestline.co.tz/" target="_blank">NBL / New Best Line (Online Booking)</a></li>
+<li><a href="https://nbsclassicbus.co.tz/" target="_blank">NBS Classic (Book Ticket)</a>SW</li>
+<li><a href="https://kaiziregekemebos.co.tz/" target="_blank">KISBO / Kemebos (Book Bus)</a></ul>
+
+</div>
+
+<div class="card">
+<h3>🚆 SGR</h3>
+<a href="https://www.trc.co.tz" target="_blank">Book SGR Ticket</a>
+</div>
+
+<div class="card">
+<h3>✈️ Airlines</h3>
+<ul>
+<li><a href="https://www.airtz.co.tz" target="_blank">Air Tanzania</a></li>
+<li><a href="https://www.precisionairtz.com" target="_blank">Precision Air</a></li>
+<li><a href="https://www.fastjet.com" target="_blank">FastJet</a></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🚢 Marine Transport</h3>
+<ul>
+<li><a href="https://www.azammarine.com" target="_blank">Azam Marine</a></li>
+<li><a href="https://www.zanfastferries.com" target="_blank">Zan Fast Ferries</a></li>
+</ul>
+</div>
+
+</section>
+
+<!-- TRANSACTIONS -->
+
+<section id="transaction">
+
+<h2>Transactions</h2>
+
+<div class="card">
+<h3>Mobile Money</h3>
+<ul>
+<li><a href="https://www.vodacom.co.tz/m-pesa" target="_blank">M-Pesa</a></li>
+<li><a href="https://www.tigo.co.tz/tigo-pesa" target="_blank">Tigo Pesa</a></li>
+<li><a href="https://www.airtel.co.tz/airtel-money" target="_blank">Airtel Money</a></li>
+<li><a href="https://halopesa.co.tz" target="_blank">HaloPesa</a></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Bank Apps</h3>
+<ul>
+<li><a href="#">NMB Mobile</a></li>
+<li><a href="#">CRDB App</a></li>
+<li><a href="#">Absa App</a></li>
+</ul>
+</div>
+
+</section>
+
+<!-- FOOD -->
+
+<section id="food">
+
+<h2>Food Menu</h2>
+
+<div class="card">
+
+<select id="foodSelect">
+<option value="5000">Chips Mayai - 5000</option>
+<option value="7000">Wali na Kuku - 7000</option>
+<option value="6000">Ugali na Samaki - 6000</option>
+<option value="3000">Chapati Maharage - 3000</option>
+</select>
+
+<input id="address" placeholder="Delivery Address">
+
+<button class="submit" onclick="goToPayment()">Proceed to Payment</button>
+
+</div>
+
+</section>
+
+<!-- PAYMENT -->
+
+<section id="payment">
+
+<h2>Payment</h2>
+
+<div class="card">
+
+<p id="orderSummary"></p>
+
+<h3>Pay with:</h3>
+
+<ul>
+<li><a href="https://www.vodacom.co.tz/m-pesa" target="_blank">M-Pesa</a></li>
+<li><a href="https://www.tigo.co.tz/tigo-pesa" target="_blank">Tigo Pesa</a></li>
+<li><a href="https://www.airtel.co.tz/airtel-money" target="_blank">Airtel Money</a></li>
+</ul>
+
+<button class="submit" onclick="confirmOrder()">Confirm Order</button>
+
+</div>
+
+</section>
+
+<!-- ADMIN LOGIN -->
+
+<section id="adminLogin">
+
+<h2>Admin Login</h2>
+
+<input id="adminUser" placeholder="Username">
+<input id="adminPass" type="password" placeholder="Password">
+
+<button class="submit" onclick="loginAdmin()">Login</button>
+
+</section>
+
+<!-- ADMIN PANEL -->
+
+<section id="adminPanel" class="admin">
+
+<h2>Admin Dashboard</h2>
+
+<h3>Food Orders</h3>
+<ul id="adminFood"></ul>
+
+</section>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* WEKA FIREBASE CONFIG YAKO */
+const firebaseConfig = {
+apiKey:"PASTE",
+authDomain:"PASTE",
+projectId:"PASTE",
+appId:"PASTE"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* NAVIGATION */
+
+window.showSection = function(id){
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+
+if(id==="payment") loadPayment();
+}
+
+/* FOOD FLOW */
+
+window.goToPayment = function(){
+
+let food = document.getElementById("foodSelect");
+let price = food.value;
+let name = food.options[food.selectedIndex].text;
+let address = document.getElementById("address").value;
+
+if(!address){
+alert("Enter address");
+return;
+}
+
+localStorage.setItem("order", JSON.stringify({
+food:name,
+price:price,
+address:address
+}));
+
+showSection("payment");
+}
+
+function loadPayment(){
+let data = JSON.parse(localStorage.getItem("order"));
+document.getElementById("orderSummary").innerText =
+data.food + " | Tsh " + data.price + " | " + data.address;
+}
+
+window.confirmOrder = async function(){
+
+let data = JSON.parse(localStorage.getItem("order"));
+
+await addDoc(collection(db,"foodOrders"),data);
+
+alert("Order placed successfully!");
+
+showSection("food");
+}
+
+/* ADMIN */
+
+window.loginAdmin=function(){
+
+let user=document.getElementById("adminUser").value;
+let pass=document.getElementById("adminPass").value;
+
+if(user==="admin" && pass==="1234"){
+showSection("adminPanel");
+loadAdmin();
+}else{
+alert("Wrong login");
+}
+}
+
+async function loadAdmin(){
+
+let fd=document.getElementById("adminFood");
+fd.innerHTML="";
+
+const foods=await getDocs(collection(db,"foodOrders"));
+
+foods.forEach(doc=>{
+let d=doc.data();
+fd.innerHTML+=`<li>${d.food} - ${d.address}</li>`;
+});
+
+}
+
+</script>
+
+</body>
+</html>
